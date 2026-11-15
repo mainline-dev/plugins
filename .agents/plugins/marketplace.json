@@ -1,0 +1,20 @@
+{
+  "name": "mainline-dev",
+  "interface": {
+    "displayName": "Mainline"
+  },
+  "plugins": [
+    {
+      "name": "mainline",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codex/mainline"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+#!/bin/sh
+# Copies the shared folders, skills/ and assets/, into each plugin folder,
+# so each plugin is complete on its own. Edit the shared folders at the top
+# of the repository, never the copies under plugins/.
+#
+#   scripts/sync          replace each plugin's copies with the shared folders
+#   scripts/sync --check  change nothing; exit 1 if any copy differs
+
+set -eu
+
+cd "$(dirname "$0")/.."
+
+shared="skills assets"
+plugins="plugins/claude/mainline plugins/codex/mainline"
+
+case "${1:-}" in
+  "")
+    for plugin in $plugins; do
+      for dir in $shared; do
+        rm -rf "$plugin/$dir"
+        cp -R "$dir" "$plugin/$dir"
+        echo "Copied $dir/ to $plugin/$dir"
+      done
+    done
+    ;;
+  --check)
+    status=0
+    for plugin in $plugins; do
+      for dir in $shared; do
+        if diff -r "$dir" "$plugin/$dir"; then
+          echo "$plugin/$dir matches $dir/"
+        else
+          echo "$plugin/$dir differs from $dir/. Edit $dir/, then run scripts/sync." >&2
+          status=1
+        fi
+      done
+    done
+    exit "$status"
+    ;;
+  *)
+    echo "Usage: scripts/sync [--check]" >&2
+    exit 2
+    ;;
+esac

@@ -1,0 +1,18 @@
+{
+  "name": "mainline",
+  "displayName": "Mainline",
+  "version": "0.1.0",
+  "description": "Work from your team's Mainline stories: tests from the acceptance scenarios first, small steps, then a walkthrough.",
+  "author": {
+    "name": "Kipple Pty Ltd"
+  },
+  "homepage": "https://mainline.dev",
+  "repository": "https://github.com/mainline-dev/plugins",
+  "license": "MIT",
+  "keywords": ["mainline", "continuous-delivery", "acceptance-tests", "stories"],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://mainline.dev/docs",
+  "supportUrl": "https://mainline.dev/contact",
+  "privacyPolicyUrl": "https://mainline.dev/privacy",
+  "termsOfServiceUrl": "https://mainline.dev/terms-and-conditions"
+}

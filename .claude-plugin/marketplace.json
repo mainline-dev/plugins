@@ -1,0 +1,14 @@
+{
+  "name": "mainline-dev",
+  "owner": {
+    "name": "Kipple Pty Ltd"
+  },
+  "description": "Plugins for teams that deliver with Mainline.",
+  "plugins": [
+    {
+      "name": "mainline",
+      "source": "./plugins/claude/mainline",
+      "description": "Work from your team's Mainline stories: tests from the acceptance scenarios first, small steps, then a walkthrough."
+    }
+  ]
+}

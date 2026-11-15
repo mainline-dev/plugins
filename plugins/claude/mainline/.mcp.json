@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mainline": {
+      "type": "http",
+      "url": "${MAINLINE_URL:-https://mainline.dev}/mcp/${MAINLINE_TEAM_ID}",
+      "headers": {
+        "Authorization": "Bearer ${MAINLINE_TOKEN}"
+      }
+    }
+  }
+}

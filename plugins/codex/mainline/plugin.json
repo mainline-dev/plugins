@@ -1,0 +1,38 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mainline",
+  "version": "0.1.0",
+  "description": "Work from your team's Mainline stories: tests from the acceptance scenarios first, small steps, then a walkthrough.",
+  "author": {
+    "name": "Kipple Pty Ltd"
+  },
+  "homepage": "https://mainline.dev",
+  "repository": "https://github.com/mainline-dev/plugins",
+  "license": "MIT",
+  "keywords": ["mainline", "continuous-delivery", "acceptance-tests", "stories"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Mainline",
+        "shortDescription": "Work from Mainline stories",
+        "longDescription": "Mainline is a project tool for continuous delivery. This plugin teaches Codex to work from your team's Mainline stories: one story at a time, a failing test from each acceptance scenario before any code, small steps, then a stop so a person can be walked through the change.\n\nIt can also turn a specification, plan or research into proposed stories for your team to review in Mainline. The skills read stories through your team's Mainline MCP server, which you connect to Codex with one command.",
+        "developerName": "Kipple Pty Ltd",
+        "category": "Developer Tools",
+        "capabilities": [],
+        "websiteURL": "https://mainline.dev",
+        "supportURL": "https://mainline.dev/contact",
+        "privacyPolicyURL": "https://mainline.dev/privacy",
+        "termsOfServiceURL": "https://mainline.dev/terms-and-conditions",
+        "defaultPrompt": [
+          "Work on story ABC12345",
+          "Prepare the walkthrough for ABC12345",
+          "Propose stories from spec.md"
+        ],
+        "brandColor": "#1A1A2E",
+        "brandColorDark": "#6BC5F0",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      }
+    }
+  }
+}
