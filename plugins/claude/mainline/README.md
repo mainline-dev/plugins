@@ -31,7 +31,7 @@ Two cases need a server you add yourself, because the plugin's own server always
 The plugin contains three skills and the address of one server. It has no scripts or programs of its own, and it holds no token or password.
 
 - **Connects to** one service: the Mainline MCP server at `https://mainline.dev/mcp`. You sign in through your browser, and Claude Code keeps that sign-in. It sends nothing to any other service.
-- **Reads** your team's maps, stories and acceptance scenarios, a story's scenarios as a feature file, the story import format and Mainline's own docs, through the server's read-only tools. Reading a story is recorded: Mainline notes in its history that a coding agent read it, for whom and with which tool.
+- **Reads** your team's maps, stories and acceptance scenarios, a story's scenarios as a feature file, the story import format and Mainline's own docs, through the server's tools. None of them can change anything your team edits. Reading a story is recorded: Mainline notes in its history that a coding agent read it, for whom and with which tool.
 - **Runs in your project**, through Claude Code: your test suite, and `git` to read the history and commit each step with the story ID. It doesn't push or deploy unless you ask.
 - **Writes** only in your project: the tests and code for a story, and the import file that propose-stories produces.
 
