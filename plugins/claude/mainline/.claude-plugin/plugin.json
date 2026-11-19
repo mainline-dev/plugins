@@ -1,7 +1,7 @@
 {
   "name": "mainline",
   "displayName": "Mainline",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Work from your team's Mainline stories: tests from the acceptance scenarios first, small steps, then a walkthrough.",
   "author": {
     "name": "Kipple Pty Ltd"
