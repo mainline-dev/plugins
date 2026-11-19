@@ -7,7 +7,7 @@ description: Build one Mainline story by working through its acceptance scenario
 
 You are building one story from the team's Mainline map. People on the team wrote and approved its acceptance scenarios. Your job is to make them pass in small, safe steps, then stop so a person can be walked through the change.
 
-The Mainline tools come from the Mainline MCP server: `list_maps`, `get_map`, `get_story` and `get_import_format`. They cannot change the map, although reading a story marks it as agent-assisted. If they are not available, stop and tell the person to connect the server as the Mainline plugin README describes. Never guess what a story or scenario says.
+The Mainline tools come from the Mainline MCP server: `list_maps`, `get_map`, `get_story`, `get_feature_file` and `get_import_format`, and on mainline.dev `read_docs`. They cannot change the map, although reading a story marks it as agent-assisted. If they are not available, stop and tell the person to sign in to the server as the Mainline plugin README describes. Never guess what a story or scenario says.
 
 ## 1. Choose one story
 

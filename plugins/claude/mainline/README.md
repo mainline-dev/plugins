@@ -13,20 +13,25 @@ In a session: `/plugin marketplace add mainline-dev/plugins`, then `/plugin inst
 
 ## Connect to Mainline
 
-Set these before you start Claude Code:
+The plugin brings the Mainline server with it. Sign in once:
 
-- `MAINLINE_TEAM_ID`: your team ID. Required.
-- `MAINLINE_TOKEN`: your team's MCP server token. Required.
-- `MAINLINE_URL`: only if your team self-hosts. Defaults to `https://mainline.dev`.
+1. Start Claude Code and type `/mcp`.
+2. Choose the Mainline server, shown as `plugin:mainline:mainline`, and authenticate.
+3. Your browser opens Mainline. Sign in, tick the teams your agent may read and approve.
 
-Both the team ID and the token are on the **MCP server** page in your team menu in Mainline. `claude mcp list` shows the server as `plugin:mainline:mainline`. If a variable is unset, its `${...}` text stays in the URL and the connection fails.
+There is no token to copy and nothing to set in your environment. You can end the sign-in at any time in Mainline, under Profile, then Coding agents.
+
+Two cases need a server you add yourself, because the plugin's own server always signs in at mainline.dev:
+
+- **An agent that can't open a browser,** such as one on a build runner. Make a personal token in Mainline under Profile, then Coding agents. The page gives the command to run.
+- **A team that hosts Mainline itself.** Run `claude mcp add --transport http mainline https://your-mainline-address/mcp`, then sign in to that server with `/mcp`.
 
 ## What it connects to and runs
 
-The plugin contains three skills and the settings for one server. It has no scripts or programs of its own.
+The plugin contains three skills and the address of one server. It has no scripts or programs of its own, and it holds no token or password.
 
-- **Connects to** one service: your team's Mainline MCP server, at `$MAINLINE_URL/mcp/$MAINLINE_TEAM_ID`, sending your team's token in the `Authorization` header. It sends nothing to any other service.
-- **Reads** your team's maps, stories, acceptance scenarios and story import format, through the server's read-only tools. Mainline notes in each story's history that a coding agent read it.
+- **Connects to** one service: the Mainline MCP server at `https://mainline.dev/mcp`. You sign in through your browser, and Claude Code keeps that sign-in. It sends nothing to any other service.
+- **Reads** your team's maps, stories and acceptance scenarios, a story's scenarios as a feature file, the story import format and Mainline's own docs, through the server's read-only tools. Mainline notes in each story's history that a coding agent read it, for whom and with which tool.
 - **Runs in your project**, through Claude Code: your test suite, and `git` to read the history and commit each step with the story ID. It doesn't push or deploy unless you ask.
 - **Writes** only in your project: the tests and code for a story, and the import file that propose-stories produces.
 

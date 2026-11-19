@@ -18,7 +18,7 @@ Or in a Claude Code session:
 /plugin install mainline@mainline-dev
 ```
 
-The plugin connects to Mainline using the environment variables below.
+Then sign in: type `/mcp` in a session, choose the Mainline server and authenticate. Your browser opens Mainline. Tick the teams your agent may read and approve.
 
 ## Install in Codex
 
@@ -31,30 +31,22 @@ codex plugin add mainline@mainline-dev
 
 Or in a Codex session, run `/plugins` and install Mainline from the Mainline marketplace. Start a new session before using it.
 
-Codex's plugin format cannot read a token from an environment variable, so in Codex the plugin brings the skills only. Set the environment variables below, then add the Mainline server once:
+Then sign in:
 
 ```sh
-codex mcp add mainline --url "${MAINLINE_URL:-https://mainline.dev}/mcp/${MAINLINE_TEAM_ID}" --bearer-token-env-var MAINLINE_TOKEN
+codex mcp login mainline
 ```
 
-Your shell fills in the URL only once, when you run this command, so set the variables first, and run it again if your team ID or Mainline address changes. Codex reads `MAINLINE_TOKEN` each time it connects.
+Your browser opens Mainline. Tick the teams your agent may read and approve, then start a new Codex session.
 
-## Environment variables
+## Signing in
 
-| Variable | | |
-|---|---|---|
-| `MAINLINE_URL` | Optional | Your Mainline address, if your team self-hosts. Defaults to `https://mainline.dev`. Leave it unset rather than empty. |
-| `MAINLINE_TEAM_ID` | Required | Your team ID. |
-| `MAINLINE_TOKEN` | Required | Your team's MCP server token. This is not the deploy webhook token. |
+The plugin brings the address of one server, `https://mainline.dev/mcp`, and no token. You sign in to Mainline in your browser and choose which of your teams the agent may read. The agent can read those teams' maps and stories and can change nothing in Mainline. End a sign-in at any time in Mainline, under Profile, then Coding agents.
 
-Set them in the environment you start Claude Code or Codex from, such as your shell profile. Keep the token out of your repositories.
+Two cases need a server you add yourself:
 
-## Find your team ID and token
-
-In Mainline, open the team menu (your team's name in the top bar) and choose **MCP server**.
-
-- **Token:** the team's account holder generates it there with **Generate Token**. It is shown only once, so store it somewhere safe. Regenerating it stops the old token working.
-- **Team ID:** once a token exists, the page shows the endpoint, which ends in `/mcp/` followed by your team ID.
+- **An agent that can't open a browser,** such as one on a build runner. Make a personal token in Mainline under Profile, then Coding agents. The page gives the command for Claude Code and for Codex.
+- **A team that hosts Mainline itself.** Add your own address as a server, for example `claude mcp add --transport http mainline https://your-mainline-address/mcp`, and sign in to that.
 
 ## Learn more
 
@@ -63,6 +55,8 @@ The Mainline docs, including how coding agents fit in: https://mainline.dev/docs
 ## This repository
 
 `skills/` holds the three skills and `assets/` holds the icon. `scripts/sync` copies both into `plugins/claude/mainline` and `plugins/codex/mainline`, and CI fails if a copy differs. Edit `skills/` and `assets/`, never the copies.
+
+Each plugin folder also holds its own server settings, which are not shared: `.mcp.json` for Claude Code and `mcp.json` for Codex.
 
 ## Licence
 
